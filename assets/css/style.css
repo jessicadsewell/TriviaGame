@@ -1,0 +1,21 @@
+body {
+    background-image: url('background-image');
+    background-color:black;
+}
+
+.container {
+    text-align: center;
+    background-color: gray;
+    width: 75%;
+}
+
+#logo-image {
+    height: 120px;
+    width: 220px;
+}
+
+#done-button {
+    background-color: black;
+    width: 150px;
+    margin-bottom: 25px;
+}
