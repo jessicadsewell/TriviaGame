@@ -70,21 +70,24 @@ function startGame() {
   for (var i = 0; i < trivia.length; i++) {
     var questionh5 = $("<h5 id='question'>")
     questionh5.text(trivia[i].question);
-    $("#triviaQuestions").append(questionh5)
+    $("#triviaQuestions").append(questionh5);
+    var Answers = trivia[i].answers;
+    for (var j=0; j<Answers.length; j++){
+      var input = $('<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="' + Answers[j] +'">')
+      // for clicking
+      var label = $('<label class="form-check-label" for="exampleRadios2"></label>');
+      // for label
+      label.text(Answers[j]);
+      input.html(label);
+      $("#triviaQuestions").append(input, label);
+    }
+
     run();
     //start the timer
     //display hidden question 
     //display done button
   }
 }
-
-// var input = $('<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">')
-// var label = $('<label class="form-check-label" for="exampleRadios2"></label>');
-// label.text(trivia[questionNumber].answers[i])
-// input.html(label);
-// $(".buttonsDiv").append(input);
-
-startGame();
 
 
 // we still need to dynamically add the timer to the page
