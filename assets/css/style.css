@@ -1,7 +1,7 @@
 body {
     width: 100%;
-    /* background-image: url("../images/starwarsbackground.jpg");
-    background-color:black; */
+    background-image: url("../images/starwarsbackground.jpg");
+    background-color:black;
 }
 
 #content {
@@ -15,12 +15,13 @@ body {
     width: 300px;
 }
 
-#done-button {
+#done-button,
+#start-button {
     background-color: black;
     width: 150px;
-    margin-bottom: 25px;
+    margin: 25px;
 }
-.Q1, 
+/* .Q1, 
 .Q2,
 .Q3,
 .Q4,
@@ -28,8 +29,16 @@ body {
 .Q6,
 .Q7 {
     padding: 20px;
-}
+} */
 
 #timer {
     padding: 20px;
+}
+
+.form-check-label {
+    padding-right: 25px;
+}
+
+#question {
+    margin-top: 20px;
 }
