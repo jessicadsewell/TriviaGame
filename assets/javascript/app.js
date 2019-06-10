@@ -51,7 +51,7 @@ $(document).ready(function () {
     },
   ]
 
-  var number = 15;
+  var number = 20;
   var intervalId;
   var correctnum = 0;
   var incorrectnum = 0;
