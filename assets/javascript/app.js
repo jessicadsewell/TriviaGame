@@ -51,7 +51,7 @@ $(document).ready(function () {
     },
   ]
 
-  var number = 5;
+  var number = 15;
   var intervalId;
   var correctnum = 0;
   var incorrectnum = 0;
@@ -106,8 +106,8 @@ $(document).ready(function () {
     number--;
     if (number === 0) {
       $("#timer").html("<h2> Time Remaining: " + number + "</h2>");
-      stop();
       checkAnswer();
+      stop();
     }
   }
   
@@ -138,13 +138,14 @@ $(document).ready(function () {
   
   
   function results() {
-    // var unanswerednum = trivia.length - (correctnum + incorrectnum);
+    var unanswerednum = trivia.length - (correctnum + incorrectnum);
     if (number === 0) {
       $("#triviaQuestions").empty();
 		  $("#triviaQuestions").html("<h3>Game Over!  Here's how you did: </h3>");
 		  $("#triviaQuestions").append("<h4> Correct: " + correctnum + "</h4>" );
 		  $("#triviaQuestions").append("<h4> Incorrect: " + incorrectnum + "</h4>" );
-		  $("#triviaQuestions").append("<h4> Unanswered: " + unanswerednum + "</h4>" );
+      $("#triviaQuestions").append("<h4> Unanswered: " + unanswerednum + "</h4>" );
+      $("#done-button").hide();
     }
   }
   
