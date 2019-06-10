@@ -22,50 +22,51 @@ $(document).ready(function () {
     {
       question: "How tall is Chewbacca?",
       answers: ["6'8''", "8'11''", "7'6''"],
-      correct: 1,
+      correct: "8'11''",
     },
     {
       question: "Yoda claims that Luke’s training will not be complete until he:",
       answers: ["Discovers the truth about Leia", "Builds a lightsaber", "Faces Darth Vader"],
-      correct: 2,
+      correct: "Faces Darth Vader",
     },
     {
       question: "Han Solo’s trusty blaster is a:",
       answers: ["DL-44", "BB-88", "D4-66"],
-      correct: 0,
+      correct: "DL-44",
     },
     {
       question: "Yoda is _____ when he passes away:",
       answers: ["700", "800", "900"],
-      correct: 2,
+      correct: "900",
     },
     {
       question: "In how many forms of communication is C-3PO fluent?",
       answers: ["Over 12 Million", "Over 6 Million", "Over 8 Million"],
-      correct: 1,
+      correct: "Over 6 Million",
     },
     {
       question: "Young Anakin Skywalker podraced in the:",
       answers: ["Bothan Spy Classic", "Boonta Eve Classic", "Bantha Poodoo classic"],
-      correct: 1,
+      correct: "Boonta Eve Classic",
     },
   ]
 
-  var number = 60;
+  var number = 5;
   var intervalId;
   var correctnum = 0;
   var incorrectnum = 0;
   var unanswerednum = 0;
-  // var userGuess = "";
   var running = false;
-  var pick;
+  // var pick;
   var holder = [];
+  // var correctAnswer = 0;
 
   $("#triviaQuestions").hide();
-  $("#answerBlock").hide();
+  // $("#answerBlock").hide();
   $("#done-button").hide();
   $("#start").html('<button type="button" class="btn btn-primary btn-lg" id="start-button"> Start </button>')
   $("#start").on("click", startGame);
+  $("#done-button").on("click", checkAnswer);
 
   function startGame() {
     $("#triviaQuestions").show();
@@ -104,52 +105,48 @@ $(document).ready(function () {
     $("#timer").html("<h2> Time Remaining: " + number + "</h2>");
     number--;
     if (number === 0) {
-      unanswerednum++;
+      $("#timer").html("<h2> Time Remaining: " + number + "</h2>");
       stop();
+      checkAnswer();
     }
   }
-
+  
+  
   function stop() {
     running = false;
     clearInterval(intervalId);
+    results();
   }
-
-  // if(number === 0) {
-  //   $("#triviaQuestions").hide();
-  //   $("#done-button").hide();
-  //   $("#answerBlock").show();
-  //   $("#answerBlock").text("Correct Answered: " + correctnum);
-  //   $("#answerBlock").text("Incorrect Answered: " + incorrectnum);
-  //   $("#answerBlock").text("Unaswered: " + unanswerednum);
-  //   $("#answerBlock").html('<button type="button" class="btn btn-primary btn-lg" id="restart-button"> Restart Questions </button>')
-  // }
-
-    if(trivia.answers === trivia.correct) {
-      stop();
-		  correctnum++;
-		  userGuess="";
-		  console.log("correct answer");
-    }else{
-      stop();
-      incorrectnum++;
-      userGuess="";
-      console.log("incorrect answer");
-    };
-
-
+  
+  
+  function checkAnswer() {
+    console.log("hello")
+    var inputs = $("#triviaQuestions").children("input:checked");
+    console.log(inputs)
+    for (var i = 0; i < inputs.length; i++) {
+      if ($(inputs[i]).val() === trivia[i].correct) {
+        correctnum++;
+        stop();
+      } else {
+        incorrectnum++;
+        stop();
+      }
+      results();
+      console.log(correctnum, incorrectnum);
+    }
+  };
+  
+  
+  function results() {
+    // var unanswerednum = trivia.length - (correctnum + incorrectnum);
+    if (number === 0) {
+      $("#triviaQuestions").empty();
+		  $("#triviaQuestions").html("<h3>Game Over!  Here's how you did: </h3>");
+		  $("#triviaQuestions").append("<h4> Correct: " + correctnum + "</h4>" );
+		  $("#triviaQuestions").append("<h4> Incorrect: " + incorrectnum + "</h4>" );
+		  $("#triviaQuestions").append("<h4> Unanswered: " + unanswerednum + "</h4>" );
+    }
+  }
+  
+  
 });
-
-  // if user guess clicks on correct answer  
-  // then correctnum ++
-
-  // if userguess clicks on incorrect answer 
-  // then incorrectnum ++
-
-  // if question is not answered
-  // then unanswernum ++ 
-
-  // if countdown = 0
-  // display correctnum, incorrect num, and unanswerednum
-  // hide questions 
-
-// if done button is clicked, display correctnum, incorrect num and unanswerednum
