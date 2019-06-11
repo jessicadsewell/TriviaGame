@@ -51,18 +51,16 @@ $(document).ready(function () {
     },
   ]
 
-  var number = 20;
+  var number = 30;
   var intervalId;
   var correctnum = 0;
   var incorrectnum = 0;
   var unanswerednum = 0;
   var running = false;
-  // var pick;
   var holder = [];
-  // var correctAnswer = 0;
+
 
   $("#triviaQuestions").hide();
-  // $("#answerBlock").hide();
   $("#done-button").hide();
   $("#start").html('<button type="button" class="btn btn-primary btn-lg" id="start-button"> Start </button>')
   $("#start").on("click", startGame);
@@ -93,7 +91,6 @@ $(document).ready(function () {
     }
   }
 
-  // we still need to dynamically add the timer to the page
   function run() {
     if (!running) {
       intervalId = setInterval(decrement, 1000);
@@ -110,15 +107,15 @@ $(document).ready(function () {
       stop();
     }
   }
-  
-  
+
+
   function stop() {
     running = false;
     clearInterval(intervalId);
     results();
   }
-  
-  
+
+
   function checkAnswer() {
     console.log("hello")
     var inputs = $("#triviaQuestions").children("input:checked");
@@ -135,19 +132,19 @@ $(document).ready(function () {
       console.log(correctnum, incorrectnum);
     }
   };
-  
-  
+
+
   function results() {
     var unanswerednum = trivia.length - (correctnum + incorrectnum);
-    if (number === 0) {
-      $("#triviaQuestions").empty();
-		  $("#triviaQuestions").html("<h3>Game Over!  Here's how you did: </h3>");
-		  $("#triviaQuestions").append("<h4> Correct: " + correctnum + "</h4>" );
-		  $("#triviaQuestions").append("<h4> Incorrect: " + incorrectnum + "</h4>" );
-      $("#triviaQuestions").append("<h4> Unanswered: " + unanswerednum + "</h4>" );
-      $("#done-button").hide();
-    }
+    $("#triviaQuestions").empty();
+    $("#triviaQuestions").html("<h3>Game Over!  Here's how you did: </h3>");
+    $("#triviaQuestions").append("<h4> Correct: " + correctnum + "</h4>");
+    $("#triviaQuestions").append("<h4> Incorrect: " + incorrectnum + "</h4>");
+    $("#triviaQuestions").append("<h4> Unanswered: " + unanswerednum + "</h4>");
+    $("#done-button").hide();
+
   }
-  
-  
+
+
+
 });
