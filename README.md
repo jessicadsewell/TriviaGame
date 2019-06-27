@@ -1,13 +1,11 @@
 # TriviaGame
 
-* Begin the trivia game by selecting the "start" button.
+In this assignment, I created a Star Wars Trivia game using JavaScript, jQuery and a timer. 
 
-* Once the start timer begins, the timer will count down and there will be a display of quetions with multiple choice answers. 
+The user will begin the game by selecting the "start" button. 
 
-* The player will have a limited amount of time to finish the quiz. 
+Once the start timer begins, the user will have 30 seconds to answer as many questions as they can. 
 
-* The game ends when the time runs out. The page will reveal the results holding the number of questions that players answer correctly and incorrectly.
+The game ends when the time runs out. The page will then reveal the results holding the number of questions that players answer correctly and incorrectly. If the player finishes before the timer is finished, there is a done button to submit and see the results. 
 
-* The player cannot pick more than one answer per question.
-
-* If the player finishes before the timer is finished, there is a done button to submit and see the results. 
+The player cannot pick more than one answer per question.
